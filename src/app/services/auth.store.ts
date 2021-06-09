@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../model/user';
 import {map, shareReplay, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 const AUTH_DATA = "auth_data";
 
@@ -18,7 +19,7 @@ export class AuthStore {
     isLoggedIn$ : Observable<boolean>;
     isLoggedOut$ : Observable<boolean>;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
 
         this.isLoggedIn$ = this.user$.pipe(map(user => !!user));
 
@@ -38,6 +39,7 @@ export class AuthStore {
                 tap(user => {
                     this.subject.next(user);
                     localStorage.setItem(AUTH_DATA, JSON.stringify(user));
+                    this.router.navigateByUrl('/courses');
                 }),
                 shareReplay()
             );
