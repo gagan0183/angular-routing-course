@@ -9,20 +9,21 @@ import {Course} from '../model/course';
     styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-
     course: Course;
-
     couponCode: string;
 
 
     constructor(private route: ActivatedRoute) {
         this.course = route.snapshot.data.course;
     }
+    
 
     ngOnInit() {
     }
 
-
+    confirmExit() {
+        return confirm(`Are you sure you want to exit ${this.course.description}`);
+    }
 }
 
 

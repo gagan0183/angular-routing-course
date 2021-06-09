@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../services/auth.guard';
+import { ConfirmExitGuard } from '../services/confirm-exit.guard';
 import { CourseResolver } from '../services/course.resolver';
 import { LessonResolver } from '../services/lesson.resolver';
 import { LessonsResolver } from '../services/lessons.resolver';
@@ -19,6 +20,7 @@ const routes: Routes = [
     component: CourseComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
+    canDeactivate: [ConfirmExitGuard],
     children: [
       {
         path: '',
@@ -50,7 +52,8 @@ const routes: Routes = [
     LessonsResolver,
     LessonResolver,
     CourseResolver,
-    AuthGuard
+    AuthGuard,
+    ConfirmExitGuard
   ]
 })
 export class CoursesRoutingModule {
