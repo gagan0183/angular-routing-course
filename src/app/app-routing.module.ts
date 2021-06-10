@@ -43,7 +43,8 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   providers: [
-    CanLoadGuard
+    CanLoadGuard,
+    CustomPreloadingStrategy
   ]
 })
 export class AppRoutingModule {

@@ -15,6 +15,7 @@ export class CourseComponent implements OnInit {
 
     constructor(private route: ActivatedRoute) {
         this.course = route.snapshot.data.course;
+        this.couponCode = route.snapshot.queryParamMap.get("couponCode");
     }
     
 
