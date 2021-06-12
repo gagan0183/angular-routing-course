@@ -10,6 +10,6 @@ export class LessonResolver implements Resolve<LessonDetail> {
     
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): LessonDetail | Observable<LessonDetail> | Promise<LessonDetail> {
         console.log(route.paramMap);
-        return this.coursesService.loadLessonDetail(route.parent.paramMap.get('courseUrl'), route.paramMap.get('lessonSeqNo'));
+        return this.coursesService.loadLessonDetail(route.paramMap.get('courseUrl'), route.paramMap.get('lessonSeqNo'));
     }
 }
